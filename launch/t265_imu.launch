@@ -1,0 +1,12 @@
+<launch>
+    <node pkg="imu_utils" type="imu_an" name="imu_an" output="screen">
+        <param name="imu_topic" type="string" value= "/camera/imu"/>
+<!--        #IMU在ROS中发布的话题-->
+        <param name="imu_name" type="string" value= "BMI055"/>
+<!--        #IMU型号-->
+        <param name="data_save_path" type="string" value= "$(find imu_utils)/data/"/>
+        <param name="max_time_min" type="int" value= "30"/>
+<!--        #运行的时长(min)，60-120min-->
+        <param name="max_cluster" type="int" value= "200"/>
+    </node>
+</launch>
