@@ -5,6 +5,64 @@ The figures are drawn by Matlab, in `scripts`.
 
 Actually, just analyze the Allan Variance for the IMU data. Collect the data while the IMU is Stationary, with a two hours duration.
 
+# Dependencies
+
+## 1. Ceres
+
+```shell
+# CMake
+sudo apt-get install cmake
+# google-glog + gflags
+sudo apt-get install libgoogle-glog-dev libgflags-dev
+# BLAS & LAPACK
+sudo apt-get install libatlas-base-dev
+# Eigen3
+sudo apt-get install libeigen3-dev
+# SuiteSparse and CXSparse (optional)
+sudo apt-get install libsuitesparse-dev
+# Ceres
+git clone https://github.com/ceres-solver/ceres-solver.git
+cd ceres-solver && mkdir build && cd build && cmake .. && make -j32
+sudo make install
+```
+
+## 2. libdw
+
+```shell
+sudo apt-get install libdw-dev
+```
+
+# T265 imu calibration
+
+## 1. T265 
+
+Get [realsense-ros](https://github.com/IntelRealSense/realsense-ros.git)
+
+Change rs_t265.launch:
+
+```shell
+<arg name="unite_imu_method" default="linear_interpolation"/>
+```
+
+And then:
+
+```shell
+roslaunch realsense2_camera rs_t265.launch
+```
+
+## 2. Imu utils
+```shell
+source /opt/ros/noetic/setup.bash && catkin build
+source /opt/ros/noetic/setup.bash && catkin build && source devel/setup.bash && roslaunch realsense2_camera rs_t265.launch
+```
+
+# Result
+
+<img src="figure/t265_imu.png">
+
+-----------------------------------------------------------------------------
+# Raw
+
 ## refrence
 
 Refrence technical report: [`Allan Variance: Noise Analysis for Gyroscopes`](http://cache.freescale.com/files/sensors/doc/app_note/AN5087.pdf "Allan Variance: Noise Analysis for Gyroscopes"), [`vectornav gyroscope`](https://www.vectornav.com/support/library/gyroscope "vectornav gyroscope") and 
