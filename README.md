@@ -202,4 +202,3 @@ Download link:[`百度网盘`](https://pan.baidu.com/s/1ggcan9D "GX4")
 xsens-MTI-100: `100Hz`
 
 Download link:[`百度网盘`](https://pan.baidu.com/s/1i64xkgP "MTI-100")
->>>>>>> master
